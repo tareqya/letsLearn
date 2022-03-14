@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CollegeActivity">
+    <ProgressBar
+        android:id="@+id/collageScreen_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/collageScreen_scrollView"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/collageScreen_img_collegeImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="center"
+                android:src="@color/cardview_dark_background"
+                />
+
+            <TextView
+                android:id="@+id/collageScreen_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:text="TITLE"
+                android:textColor="#000"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                 />
+
+            <TextView
+                android:id="@+id/collageScreen_tv_disc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:text="discription"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/collageScreen_tv_facultyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="المواضيع"
+                android:textColor="#000"
+                android:textSize="28sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="اختر نوع البحث"
+                android:layout_gravity="end"
+                android:padding="10dp"
+                />
+
+            <RadioGroup
+                android:id="@+id/collageScreen_rbg_type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="בגרות"/>
+
+                <RadioButton
+                    android:id="@+id/collageScreen_rb_bag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="פסיכומטרי"/>
+
+                <RadioButton
+                    android:id="@+id/collageScreen_rb_psycho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            </RadioGroup>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="مجال العلامات"
+                android:layout_gravity="end"
+                android:textSize="20sp"
+                />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:paddingHorizontal="10dp"
+                >
+                <EditText
+                    android:id="@+id/collageScreen_et_toGrade"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حتى"
+                    />
+
+                <EditText
+                    android:id="@+id/collageScreen_et_fromGrade"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="من"
+                    />
+            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/collageScreen_btn_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="بحث"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="10dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/collageScreen_RV_faculty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

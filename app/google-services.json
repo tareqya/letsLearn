@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "738592275130",
+    "firebase_url": "https://letslearn-5d4de-default-rtdb.firebaseio.com",
+    "project_id": "letslearn-5d4de",
+    "storage_bucket": "letslearn-5d4de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738592275130:android:dfc6aa50e0cdf9831b6083",
+        "android_client_info": {
+          "package_name": "com.dima.letslearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738592275130-m5huknovmtjgtdd67f9s3cf1efhoo8db.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2UtLBbIlXCM7KDdcG3G-MmPH892wZ2js"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738592275130-m5huknovmtjgtdd67f9s3cf1efhoo8db.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

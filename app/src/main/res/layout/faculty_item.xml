@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    app:cardCornerRadius="20dp"
+    android:elevation="8dp"
+    app:cardElevation="8dp"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent" >
+            <TextView
+                android:id="@+id/faculty_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faculty Name"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:padding="5dp"
+                android:layout_gravity="end"
+                android:ellipsize="end"
+                android:maxLines="1"
+                />
+            <TextView
+                android:layout_gravity="end"
+                android:id="@+id/faculty_tv_psychoGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="620"
+                android:textSize="20sp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                />
+            <TextView
+                android:layout_gravity="end"
+                android:id="@+id/faculty_tv_bagGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90"
+                android:textSize="20sp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/scholarship"
+            />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

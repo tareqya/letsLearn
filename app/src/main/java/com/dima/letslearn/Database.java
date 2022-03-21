@@ -22,6 +22,7 @@ public class Database {
     private FirebaseDatabase mDatabase;
     private FirebaseStorage mStorage;
     private CollegeCallBack collegeCallBack;
+    private ScholarshipCallBack scholarshipCallBack;
 
     public Database(){
         mDatabase = FirebaseDatabase.getInstance("https://letslearn-5d4de-default-rtdb.firebaseio.com");
@@ -31,9 +32,15 @@ public class Database {
     public void setCollegeCallBack(CollegeCallBack collegeCallBack){
         this.collegeCallBack = collegeCallBack;
     }
-
+    public void setScholarshipCallBack(ScholarshipCallBack scholarshipCallBack){
+        this.scholarshipCallBack = scholarshipCallBack;
+    }
     public void insertCollege(College college){
         mDatabase.getReference().child("Colleges").push().setValue(college);
+    }
+
+    public void insertScholarship(Scholarship scholarship){
+        mDatabase.getReference().child("Scholarships").push().setValue(scholarship);
     }
 
     public void getCollege(String key) {
@@ -92,5 +99,26 @@ public class Database {
         });
     }
 
+    public void getScholarships() {
+        mDatabase.getReference().child("Scholarships").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Scholarship> arr = new ArrayList<>();
+                for(DataSnapshot data: snapshot.getChildren()) {
+                    Scholarship scholarship = data.getValue(Scholarship.class);
+                    arr.add(scholarship);
+                }
+                if(scholarshipCallBack != null){
+                    scholarshipCallBack.onScholarshipsFetchDone(arr, true);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                if(scholarshipCallBack != null){
+                    scholarshipCallBack.onScholarshipsFetchDone(null, false);
+                }
+            }
+        });
+    }
 }

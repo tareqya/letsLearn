@@ -6,8 +6,10 @@
         <entry key="../../../layout/custom_preview.xml" value="0.259375" />
         <entry key="app/src/main/res/layout/activity_college.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3380208333333333" />
+        <entry key="app/src/main/res/layout/activity_scholarship.xml" value="0.25" />
         <entry key="app/src/main/res/layout/college_item.xml" value="0.3380208333333333" />
         <entry key="app/src/main/res/layout/faculty_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/scholarship_item.xml" value="0.25" />
       </map>
     </option>
   </component>

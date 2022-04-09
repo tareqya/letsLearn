@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViews();
         initVars();
-
+        //test();
     }
 
     private void findViews() {
@@ -196,36 +196,36 @@ public class MainActivity extends AppCompatActivity {
         for(Scholarship scholarship : lst){
             this.db.insertScholarship(scholarship);
         }
-
-
-
     }
 
-//    private void test(){
-//        ArrayList<Faculty> faculties = new ArrayList<>();
-//        faculties.add(new Faculty().setName("إدارة أعمال").setBagrotGrade(100).setPsychometricGrade(600));
-//        faculties.add(new Faculty().setName("تدقيق حسابات").setBagrotGrade(110).setPsychometricGrade(680));
-//        faculties.add(new Faculty().setName("عمل إجتماعيّ").setBagrotGrade(100).setPsychometricGrade(600));
-//        faculties.add(new Faculty().setName("علم النفس").setBagrotGrade(105).setPsychometricGrade(650));
-//        faculties.add(new Faculty().setName("لغة عبريّة").setBagrotGrade(100).setPsychometricGrade(500));
-//        faculties.add(new Faculty().setName("لغة إنجليزيّة").setBagrotGrade(100).setPsychometricGrade(500));
-//        faculties.add(new Faculty().setName("طبّ أسنان").setBagrotGrade(115).setPsychometricGrade(720));
-//        faculties.add(new Faculty().setName("علوم الحيوان").setBagrotGrade(105).setPsychometricGrade(620));
-//        faculties.add(new Faculty().setName("طبّ بيطريّ").setBagrotGrade(110).setPsychometricGrade(700));
-//
-//        College college = new College();
-//        college
-//                .setName("الجامعة العبرية في القدس")
-//                .setDescription("الجامعة العبرية في القدس (بالعبرية: האוניברסיטה העברית בירושלים بالإنجليزية: The Hebrew University of Jerusalem) هي جامعة إسرائيلية عامة في مدينة القدس. كانت الجامعة العبرية أول جامعة، وثاني مؤسسة أكاديمية في فلسطين، تأسست عام 1925 أيام الانتداب البريطاني بمبادرة الحركة الصهيونية. تتصدر الجامعة المؤسسات الأكاديمية في إسرائيل اليوم، تخرج منها عدة شخصيات بارزة في مجال الأبحاث ومجالات أخرى، ومنهم من حاز أيضا على جائزة نوبل، كما أن هذه الجامعة تصنف 64 على مستوى العالم حسب \"الترتيب الأكاديمي للجامعات حسب جامعة شانغهاي\" [1]، أو 93 حسب \"تصنيف THE\" [2]" +
-//                        "" +
-//                        "الجامعة العبرية هي اليوم جامعة جماهيرية ممولة من قبل دولة إسرائيل بالإضافة إلى تبرعات وأرباح بيع الكتب ومنح حقوق نشر على أبحاث. من أهم المصادر المالية المتوفرة للجامعة هو بيع تصاريح لاستخدام اسم ألبرت أينشتاين وصورته بموجب وصية أينشتاين الذي نقل الحقوق على استخدام اسمه وصورته بعد وفاته للجامعة [3] [4]." +
-//                        "" +
-//                        "بلغ عدد طلاب الجامعة 24 ألف طالب في 2006 غالبيتهم إسرائيليون (من اليهود والعرب) وبعضهم أجانب، من بينهم عدد كبير من اليهود غير الإسرائيليين. وبلغ عدد الأساتذة المعلمين في الجامعة في ذلك العام 1200 أستاذ. اللغتان الرئيسيتان المستخدمتان للتعليم هما العبرية والإنجليزية. تنتشر دوائر الجامعة في خمسة حرمات جامعية، منهم ثلاثة حرمات في القدس: حرم جبل المشارف - أقدم الحرمات، يشمل كلية الأدبيات، كليات الحقوق وكلية العلوم الاجتماعية، حرم إدموند سافرا في گفعات رام (تلة الشيخ بدر) - يشمل كلية العلوم الطبيعية، الرياضيات، المعلوماتية وغيرها من الدوائر، حرم عين كرم يشمل كلية الطب (ضمن مستشفى هداسا عين كرم). أما الحرمين الجامعيين التابعة للجامعة العبرية خارج القدس فهما: حرم رحوبوت وحرم بيت دجان الذان يشملان كلية تعليم للزراعة العلوم الغذائية والطب البيطري. كذلك هناك مختبر لأبحاث في علم الأحياء البحري تابعة للجامعة العبرية في مدينة إيلات.")
-//                .setImageUrl("")
-//                .setLogoUrl("")
-//                .setCollegeWebSiteUrl("https://new.huji.ac.il/")
-//                .setFaculties(faculties);
-//
-//        //db.insertCollege(college);
-//    }
+    private void test(){
+        ArrayList<Faculty> faculties = new ArrayList<>();
+        faculties.add(new Faculty().setName("بيولوجيا").setBagrotGrade(100).setPsychometricGrade(690));
+        faculties.add(new Faculty().setName("هندسة موارد المياه والبيئة").setBagrotGrade(110).setPsychometricGrade(680));
+        faculties.add(new Faculty().setName("هندسة بيو-طبيّةّ").setBagrotGrade(100).setPsychometricGrade(600));
+        faculties.add(new Faculty().setName("هندسة كيميائيّة").setBagrotGrade(105).setPsychometricGrade(650));
+        faculties.add(new Faculty().setName("فيزياء").setBagrotGrade(100).setPsychometricGrade(650));
+        faculties.add(new Faculty().setName("كيمياء").setBagrotGrade(100).setPsychometricGrade(600));
+        faculties.add(new Faculty().setName("هندسة جغرافيّة").setBagrotGrade(115).setPsychometricGrade(720));
+        faculties.add(new Faculty().setName("هندسة الحاسوب").setBagrotGrade(110).setPsychometricGrade(680));
+        faculties.add(new Faculty().setName("هندسة البرمجيّات").setBagrotGrade(115).setPsychometricGrade(700));
+
+        College college = new College();
+        college
+                .setName("تخنيون")
+                .setDescription("يتواجد التخنيون في مدينة حيفا وتحديدًا على جبل الكرمل، ويطلق عليه عادةً إسم “قرية التخنيون” نسبةً إلى الحيّز الكبير الذي يشغله.\n" +
+                        "يقسّم التخنيون إلى قسمين:\n" +
+                        "– قرية التخنيون الواقعة على جبل الكرمل، والتي فيها تُعلّم معظم المواضيع التعليميّة.\n" +
+                        "– كلّيّة الطب، والتي تقع بجانب مستشفى “رمبام”، وهي كلّيّة منعزلة نسبيًّا عن باقي كلّيّات التخنيون.\n" +
+                        "\n" +
+                        "نبذة عن تاريخ التخنيون ومستواه:\n" +
+                        "تأسّس التخنيون عام 1924. مقرّه الأوّل كان ما يعرف اليوم بمتحف العلوم، التكنولوجيا والفضاء، وقد نُقل إلى موقعه الحالي عام 1953.\n" +
+                        "يعتبر التخنيون الجامعة الأولى في البلاد من حيث المستوى التعليميّ في مجالات العلوم والهندسة والفروع المتّصلة بها مثل هندسة العمار، هندسة الحاسوب والهندسة البيو-طبّيّة وغيرها.")
+                .setImageUrl("")
+                .setLogoUrl("")
+                .setCollegeWebSiteUrl("https://new.huji.ac.il/")
+                .setFaculties(faculties);
+
+        db.insertCollege(college);
+    }
 }

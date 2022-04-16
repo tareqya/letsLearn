@@ -9,12 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -27,16 +31,27 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar home_progressbar;
     private TextInputLayout home_txtField_search;
     private Button btn_Scholarship;
+    private LottieAnimationView main_splash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
         findViews();
         initVars();
-        //test();
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                main_splash.setVisibility(View.INVISIBLE);
+            }
+        }, 2000);
+
+
+        // addCollage();
+        // addScholarship();
     }
 
     private void findViews() {
@@ -44,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         home_progressbar = findViewById(R.id.home_progressbar);
         home_txtField_search = findViewById(R.id.home_txtField_search);
         btn_Scholarship = findViewById(R.id.btn_Scholarship);
+        main_splash = findViewById(R.id.main_splash);
     }
 
     private void initVars() {
@@ -128,13 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         lst.add(new Scholarship()
                 .setName("منحة ارتقاء")
-                .setDescription("منحة بقيمة 10 الاف شواقل لكل سنة تعليمية، في أول سنتين يحصل الطالب في كل سنة على مبلغ 10,000 شيكل، وإبتداء من السنة الثالثة يتم منح الطالب 8000 شواقل سنويا حتى إنهاء سنين الدراسة للقب الأول ." +
-                        "" +
-                        "الحصول على المنحة مشروط بعمل تطوعي 40 ساعة في السنة الاولى و80 ساعة في السنة الثانية فما فوق" +
-                        "" +
-                        "لمزيد من التفاصيل والاستفسار حول تعبئة النموذج: هاتف 6664409-04 / فاكس: 6457788-04 https://irteka.co.il/landing-page-2018/ او يمكنك التوجه لمركز/ة التعليم العالي في بلدك www.rowad.org.il" +
-                        "" +
-                        "فترة التسجيل للمنحه – تشرين اول(10)تشرين ثاني(11)"));
+                .setDescription(""));
         lst.add(new Scholarship()
         .setName("منحة مجلس التعليم العالي ووزارة المعارف")
         .setDescription("المنحة مخصصة لكل الطلاب الجامعيين عدا تلاميذ مؤسسات تأهيل المعلمين او مؤسسات تعليمية خارج البلاد." +
@@ -198,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void test(){
+    private void addCollage(){
         ArrayList<Faculty> faculties = new ArrayList<>();
         faculties.add(new Faculty().setName("بيولوجيا").setBagrotGrade(100).setPsychometricGrade(690));
         faculties.add(new Faculty().setName("هندسة موارد المياه والبيئة").setBagrotGrade(110).setPsychometricGrade(680));
@@ -209,18 +219,12 @@ public class MainActivity extends AppCompatActivity {
         faculties.add(new Faculty().setName("هندسة جغرافيّة").setBagrotGrade(115).setPsychometricGrade(720));
         faculties.add(new Faculty().setName("هندسة الحاسوب").setBagrotGrade(110).setPsychometricGrade(680));
         faculties.add(new Faculty().setName("هندسة البرمجيّات").setBagrotGrade(115).setPsychometricGrade(700));
+        faculties.add(new Faculty().setName("هندسة البرمجيّات").setBagrotGrade(115).setPsychometricGrade(700));
 
         College college = new College();
         college
                 .setName("تخنيون")
-                .setDescription("يتواجد التخنيون في مدينة حيفا وتحديدًا على جبل الكرمل، ويطلق عليه عادةً إسم “قرية التخنيون” نسبةً إلى الحيّز الكبير الذي يشغله.\n" +
-                        "يقسّم التخنيون إلى قسمين:\n" +
-                        "– قرية التخنيون الواقعة على جبل الكرمل، والتي فيها تُعلّم معظم المواضيع التعليميّة.\n" +
-                        "– كلّيّة الطب، والتي تقع بجانب مستشفى “رمبام”، وهي كلّيّة منعزلة نسبيًّا عن باقي كلّيّات التخنيون.\n" +
-                        "\n" +
-                        "نبذة عن تاريخ التخنيون ومستواه:\n" +
-                        "تأسّس التخنيون عام 1924. مقرّه الأوّل كان ما يعرف اليوم بمتحف العلوم، التكنولوجيا والفضاء، وقد نُقل إلى موقعه الحالي عام 1953.\n" +
-                        "يعتبر التخنيون الجامعة الأولى في البلاد من حيث المستوى التعليميّ في مجالات العلوم والهندسة والفروع المتّصلة بها مثل هندسة العمار، هندسة الحاسوب والهندسة البيو-طبّيّة وغيرها.")
+                .setDescription("")
                 .setImageUrl("")
                 .setLogoUrl("")
                 .setCollegeWebSiteUrl("https://new.huji.ac.il/")

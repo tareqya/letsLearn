@@ -5,6 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/main_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:translationZ="1dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/study"
+        app:lottie_speed="0.4" />
+
     <Button
         android:id="@+id/btn_Scholarship"
         android:layout_width="wrap_content"

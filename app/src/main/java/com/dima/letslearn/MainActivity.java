@@ -1,146 +1,87 @@
 package com.dima.letslearn;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.FrameLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String COLLEGE_ID = "college_id";
     private Database db;
-    private ArrayList<College> colleges;
-    private RecyclerView home_recycleView_colleges;
-    private ProgressBar home_progressbar;
-    private TextInputLayout home_txtField_search;
-    private Button btn_Scholarship;
-    private LottieAnimationView main_splash;
+    public static final String COLLEGE_ID = "college_id";
+    private HomeFragment homeFragment;
+    private ScholarshipFragment scholarshipFragment;
+    private BottomNavigationView bottom_navigation;
+    private FrameLayout homeFrame, scholarshipFrame;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        findViews();
-        initVars();
-        final Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(new Runnable() {
+        db = new Database();
+
+        bottom_navigation = findViewById(R.id.bottom_navigation);
+        homeFrame = findViewById(R.id.home_frame_home);
+        scholarshipFrame = findViewById(R.id.home_frame_scholarship);
+
+        homeFragment = new HomeFragment(this);
+        getSupportFragmentManager().beginTransaction().add(R.id.home_frame_home, homeFragment).commit();
+        scholarshipFragment = new ScholarshipFragment(this);
+        getSupportFragmentManager().beginTransaction().add(R.id.home_frame_scholarship, scholarshipFragment).commit();
+
+        homeFrame.setVisibility(View.VISIBLE);
+        scholarshipFrame.setVisibility(View.INVISIBLE);
+
+
+
+        bottom_navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void run() {
-                //Do something after 100ms
-                main_splash.setVisibility(View.INVISIBLE);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_home:
+                        homeFrame.setVisibility(View.VISIBLE);
+                        scholarshipFrame.setVisibility(View.INVISIBLE);
+                        break;
+                    case R.id.menu_scholarship:
+                        homeFrame.setVisibility(View.INVISIBLE);
+                        scholarshipFrame.setVisibility(View.VISIBLE);
+                        break;
+                }
+                return true;
             }
-        }, 2000);
+        });
 
 
         // addCollage();
         // addScholarship();
     }
 
-    private void findViews() {
-        home_recycleView_colleges = findViewById(R.id.home_recycleView_colleges);
-        home_progressbar = findViewById(R.id.home_progressbar);
-        home_txtField_search = findViewById(R.id.home_txtField_search);
-        btn_Scholarship = findViewById(R.id.btn_Scholarship);
-        main_splash = findViewById(R.id.main_splash);
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        MainActivity.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
-
-    private void initVars() {
-        db = new Database();
-        colleges = new ArrayList<>();
-        db.setCollegeCallBack(callBack);
-        db.getColleges();
-        home_txtField_search.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                searchForCollage(charSequence.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
-        btn_Scholarship.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ScholarshipActivity.class));
-            }
-        });
-
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private void searchForCollage(String collegeName){
-        ArrayList<College> filteredColleges = new ArrayList<>();
-
-        for(int i = 0; i < this.colleges.size(); i++){
-            if(this.colleges.get(i).getName().contains(collegeName)){
-                filteredColleges.add(this.colleges.get(i));
-            }
-        }
-
-        CollegeAdapter collegeAdapter = (CollegeAdapter)home_recycleView_colleges.getAdapter();
-        if(collegeName != "")
-            collegeAdapter.setColleges(filteredColleges);
-        else
-            collegeAdapter.setColleges(colleges);
-
-        collegeAdapter.notifyDataSetChanged();
-    }
-
-    private CollegeCallBack callBack = new CollegeCallBack() {
-        @Override
-        public void onCollegesDataFetch(ArrayList<College> arr) {
-            colleges = arr;
-            CollegeAdapter adapter_collage = new CollegeAdapter(MainActivity.this, arr);
-            home_recycleView_colleges.setAdapter(adapter_collage);
-            home_recycleView_colleges.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
-            home_recycleView_colleges.setHasFixedSize(true);
-            home_recycleView_colleges.setItemAnimator(new DefaultItemAnimator());
-            home_progressbar.setVisibility(View.GONE);
-            adapter_collage.setCollegeAdapter_callBack(new CollegeAdapter_CallBack() {
-                @Override
-                public void onClick(College college) {
-                    Intent intent = new Intent(MainActivity.this, CollegeActivity.class);
-                    intent.putExtra(COLLEGE_ID, college.getId());
-                    startActivity(intent);
-                }
-            });
-        }
-
-        @Override
-        public void onCollegeDataFetch(College college) {
-
-        }
-    };
 
     private void addScholarship(){
-        ArrayList<Scholarship> lst =new ArrayList<>();
+        ArrayList<Scholarship> lst = new ArrayList<>();
 
         lst.add(new Scholarship()
                 .setName("منحة ارتقاء")

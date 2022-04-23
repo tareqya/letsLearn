@@ -5,84 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/main_splash"
+
+    <FrameLayout
+        android:id="@+id/home_frame_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:scaleType="fitCenter"
-        android:translationZ="1dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/study"
-        app:lottie_speed="0.4" />
-
-    <Button
-        android:id="@+id/btn_Scholarship"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="منحة دراسية"
-        android:layout_alignParentStart="true"
-        android:layout_margin="10dp"
+        android:layout_above="@+id/home_BNL"
         />
+    <FrameLayout
+        android:id="@+id/home_frame_scholarship"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/home_BNL"
+        />
+
     <LinearLayout
-        android:id="@+id/home_title_wrapper"
-        android:layout_width="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="مرحبا بك"
-            android:textSize="32sp"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_gravity="end"
-            android:layout_marginBottom="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="هنا يمكنك البحث عن جامعات أو كليات في إسرائيل"
-            android:textSize="20sp"
-            android:layout_gravity="end"
-            />
-    </LinearLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_below="@+id/home_title_wrapper"
-        android:id="@+id/home_txtField_search"
+        android:id="@+id/home_BNL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="بحث"
-        app:startIconDrawable="@drawable/ic_baseline_search_24"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
         >
-
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:menu="@menu/bottom_navigation_menu"
+            app:backgroundTint="@color/purple_500"
+            app:itemIconTint="@drawable/tab_color"
+            app:itemTextColor="@drawable/tab_color"
             />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_recycleView_colleges"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/home_txtField_search" />
-
-    <ProgressBar
-        android:id="@+id/home_progressbar"
-        android:layout_centerInParent="true"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </RelativeLayout>

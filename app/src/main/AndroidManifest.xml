@@ -10,9 +10,6 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.LetsLearn">
         <activity
-            android:name=".ScholarshipActivity"
-            android:exported="true" />
-        <activity
             android:name=".CollegeActivity"
             android:exported="true" />
         <activity
